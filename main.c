@@ -59,20 +59,35 @@ int main() {
 
   srand(time(NULL));
 
-  for (int i = 0; i < 5000; i++) {
+  int x = 250;
+  int y = 250;
+
+  for (int i = 0; i < 50000; i++) {
     c2.red = rand() % 256;
     c2.green = rand() % 256;
     c2.blue = rand() % 256;
 
-    draw_line(250, 250, rand() % 501, rand() % 501, s2, c2);
+    int r = rand() % 4;
 
-    draw_line(125, 375, rand() % 501, rand() % 501, s2, c2);
+    if (r == 0) {
+      draw_line(x, y-5, x, y, s2, c2);
+      y -= 5;
+    }
 
-    draw_line(375, 375, rand() % 501, rand() % 501, s2, c2);
+    else if (r == 1) {
+      draw_line(x, y, x + 5, y, s2, c2);
+      x += 5;
+    }
 
-    draw_line(375, 125, rand() % 501, rand() % 501, s2, c2);
+    else if (r == 2) {
+      draw_line(x, y, x, y + 5, s2, c2);
+      y += 5;
+    }
 
-    draw_line(125, 125, rand() % 501, rand() % 501, s2, c2);
+    else {
+      draw_line(x - 5, y, x, y, s2, c2);
+      x -= 5;
+    }
   }
 
   save_extension(s2, "The_cooler_lines.png");
