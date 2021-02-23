@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "ml6.h"
 #include "display.h"
@@ -47,4 +48,32 @@ int main() {
 
   display(s);
   save_extension(s, "lines.png");
+
+
+
+  // Picture for Gallery Submission
+  screen s2;
+  color c2;
+
+  clear_screen(s2);
+
+  srand(time(NULL));
+
+  for (int i = 0; i < 5000; i++) {
+    c2.red = rand() % 256;
+    c2.green = rand() % 256;
+    c2.blue = rand() % 256;
+
+    draw_line(250, 250, rand() % 501, rand() % 501, s2, c2);
+
+    draw_line(125, 375, rand() % 501, rand() % 501, s2, c2);
+
+    draw_line(375, 375, rand() % 501, rand() % 501, s2, c2);
+
+    draw_line(375, 125, rand() % 501, rand() % 501, s2, c2);
+
+    draw_line(125, 125, rand() % 501, rand() % 501, s2, c2);
+  }
+
+  save_extension(s2, "The_cooler_lines.png");
 }
